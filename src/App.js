@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import MainPage from 'pages/MainPage';
 import FilmItemPage from 'pages/FilmItemPage';
@@ -21,6 +21,7 @@ const App = () => {
 				<Switch>
 					<Route exact path="/" component={MainPage} />
 					<Route path="/film/:id" component={FilmItemPage} />
+					<Redirect to="/" />
 				</Switch>
 			</BrowserRouter>
 		</div>

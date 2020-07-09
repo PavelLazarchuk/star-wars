@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://swapi.dev/api/';
+const BASE_URL = 'https://swapi.dev/api/';
 
 class API {
 	get(url) {
