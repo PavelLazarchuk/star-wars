@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 
 import MainPage from 'pages/MainPage';
+import FilmItemPage from 'pages/FilmItemPage';
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -15,7 +17,12 @@ const App = () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<MainPage />
+			<BrowserRouter>
+				<Switch>
+					<Route exact path="/" component={MainPage} />
+					<Route path="/film/:id" component={FilmItemPage} />
+				</Switch>
+			</BrowserRouter>
 		</div>
 	);
 };

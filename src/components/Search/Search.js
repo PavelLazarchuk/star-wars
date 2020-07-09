@@ -1,30 +1,37 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
-const useStyles = makeStyles(() => ({
-	root: {
-		textAlign: 'center',
-		padding: '15px 0 50px 0',
-	},
-	input: {
-		border: 0,
-		outline: 0,
-		color: '#ffffff',
-		borderRadius: 12,
-		padding: '5px 10px',
-		backgroundColor: '#8D8A8A',
-	},
-}));
+import useStyles from './styles';
 
-const Search = () => {
+const Search = ({ filmList }) => {
 	const classes = useStyles();
-	const [value, setValue] = useState('');
+
+	const getFilmId = url => url.split('http://swapi.dev/api/films/')[1];
 
 	return (
-		<div className={classes.root}>
-			<input value={value} className={classes.input} onChange={e => setValue(e.target.value)} />
-		</div>
+		<Autocomplete
+			autoComplete
+			options={filmList || []}
+			noOptionsText="No Films"
+			className={classes.input}
+			getOptionLabel={option => option.title}
+			renderOption={option => (
+				<Link to={`/film/${getFilmId(option.url)}`} className={classes.linkSearch}>
+					Star Wars: Episode {`${option.episode_id} - ${option.title}`}
+				</Link>
+			)}
+			renderInput={params => (
+				<TextField {...params} size="small" placeholder="search film by name..." fullWidth />
+			)}
+		/>
 	);
 };
 
-export default Search;
+const mapStateToProps = ({ films }) => ({
+	filmList: films.films,
+});
+
+export default connect(mapStateToProps)(Search);

@@ -1,8 +1,9 @@
-import { GET_FILMS } from './types';
+import { GET_FILMS, GET_ONE_FILM } from './types';
 import { ERROR } from 'utils/action/errorAction';
 
 const initialState = {
 	films: null,
+	oneFilm: null,
 	error: null,
 };
 
@@ -12,6 +13,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				films: action.payload,
+			};
+
+		case GET_ONE_FILM:
+			return {
+				...state,
+				oneFilm: action.payload,
 			};
 
 		case ERROR:

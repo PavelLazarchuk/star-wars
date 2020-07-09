@@ -1,1 +1,2 @@
 export const GET_STARSHIPS = 'GET_STARSHIPS';
+export const GET_VEHICLES = 'GET_VEHICLES';

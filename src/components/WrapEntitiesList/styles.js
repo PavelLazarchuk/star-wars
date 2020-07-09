@@ -8,6 +8,7 @@ const useStyles = makeStyles(() => ({
 	title: {
 		margin: 0,
 		fontSize: 16,
+		color: 'red',
 		paddingBottom: 5,
 	},
 	bold: {
