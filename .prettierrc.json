@@ -7,5 +7,6 @@
 	"jsxBracketSameLine": false,
 	"tabWidth": 2,
 	"parser": "flow",
-	"semi": true
+	"semi": true,
+	"arrowParens": "avoid"
 }
